@@ -3,7 +3,6 @@ const chokidar = require('chokidar');
 const fs = require('fs');
 const config = require('./config');
 const generatePageRoute = require('./generate-page-route');
-const generatePageInitState = require('./generate-page-init-state');
 
 const pageSourceFileName = config.pagePath;
 const pageInitStateFileName = config.pageInitStateFileName;
@@ -15,12 +14,10 @@ fs.existsSync(pageRouteFileName) && fs.unlinkSync(pageRouteFileName);
 
 function generate() {
     generatePageRoute.generateAllPageRoute();
-    generatePageInitState.generateAllInitState();
 }
 
 function watch() {
     chokidar.watch([pageSourceFileName], {ignored: config.pageIgnore}).on('all', (event, pathName) => {
-        generatePageInitState.handlePageInitStateWatch(event, pathName);
         generatePageRoute.handlePageRouteWatch(event, pathName);
     });
 }

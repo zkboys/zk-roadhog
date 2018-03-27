@@ -43,6 +43,5 @@ if (rcConfig) {
 export default {
     pageIgnore, // 忽略文件，不进行构建，提供部分模块打包功能，提高reBuild速度
     pagePath, // 使用了PAGE_ROUTE INIT_STATE 文件所在目录，与routesIgnore同样可以控制打包模块
-    pageInitStateFileName: path.join(srcPath, 'pages', 'page-init-state.js'),
     pageRouteFileName: path.join(srcPath, 'pages', './page-routes.js'),
 };
